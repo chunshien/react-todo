@@ -3,15 +3,11 @@ var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
 var TestUtils = require('react-addons-test-utils');
 var expect = require('expect');
-var $ = require('jQuery');
+var $ = require('jquery');
 
 var configureStore = require('configureStore');
-//var TodoApp = require('TodoApp');
-//var TodoList = require('TodoList');
-import * as TodoList from 'TodoList';
-
-//var TodoApp= require('TodoApp');
 import {TodoApp} from 'TodoApp';
+import TodoList from 'TodoList';
 
 describe('TodoApp', ()=>{
   it('it should exist', ()=>{
