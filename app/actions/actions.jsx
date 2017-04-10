@@ -30,7 +30,7 @@ export var startAddTodo =(text)=>{
       text,
       completed: false,
       createAt: moment().unix(),
-      completedAt: null
+      completedAt: 0
     };
     var todoRef = firebaseRef.child('todos').push(todo);
 
@@ -52,9 +52,25 @@ export var addTodos = (todos) =>{
 };
 
 // toggleToDo(id) TOGGLE_TODO
-export var toggleToDo = (id)=>{
+export var updateTodo = (id, updates)=>{
   return{
-    type:'TOGGLE_TODO',
-    id
+    type:'UPDATE_TODO',
+    id,
+    updates
+  };
+};
+
+export var startToggleTodo = (id, completed)=>{
+  return (dispatch, getState)=>{
+    var todoRef = firebaseRef.child(`todos/${id}`);
+    var updates = {
+      completed,
+      completedAt: completed ? moment().unix(): null
+    };
+
+    return todoRef.update(updates).then(()=>{
+      dispatch(updateTodo(id,updates));
+    });
+
   };
 };
