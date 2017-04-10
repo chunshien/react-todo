@@ -6,11 +6,12 @@ var expect = require('expect');
 var $ = require('jQuery');
 
 var configureStore = require('configureStore');
-var TodoApp = require('TodoApp');
+//var TodoApp = require('TodoApp');
 //var TodoList = require('TodoList');
-import TodoList from 'TodoList';
+import * as TodoList from 'TodoList';
 
-var TodoApp= require('TodoApp');
+//var TodoApp= require('TodoApp');
+import {TodoApp} from 'TodoApp';
 
 describe('TodoApp', ()=>{
   it('it should exist', ()=>{

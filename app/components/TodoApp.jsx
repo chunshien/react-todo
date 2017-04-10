@@ -8,8 +8,11 @@ import TodoSearch from 'TodoSearch';
 //var uuid = require('uuid');
 //var TodoAPI = require('TodoAPI');
 //var moment = require('moment');
+import * as Redux from 'react-redux';
+import * as actions from 'actions';
 
-var TodoApp=React.createClass({
+
+export var TodoApp=React.createClass({
   // getInitialState: function(){
   //   return {
   //     showCompleted : false,
@@ -54,11 +57,21 @@ var TodoApp=React.createClass({
   //   });
   //   //alert(id);
   // },
-  render: function(){
+  onLogout(e){
+    var {dispatch} = this.props;
+    e.preventDefault();
+
+    dispatch(actions.startLogout());
+  },
+  render(){
     //var {todos, showCompleted, searchText} = this.state;
     //var filterTodos = TodoAPI.filterTodos(todos, showCompleted,searchText);
     return (
       <div >
+        <div className="page-actions">
+          <a href="#" onClick={this.onLogout}>Logout</a>
+        </div>
+
         <h1 className="page-title">Todo App</h1>
         <div className="row">
           <div className="column small-centered small-11 large-5 medium-6">
@@ -77,4 +90,4 @@ var TodoApp=React.createClass({
   }
 });
 
-module.exports = TodoApp;
+export default Redux.connect()(TodoApp);
